@@ -1,0 +1,76 @@
+.main {
+    width: 800px;
+    margin: 0 auto;
+    // perspective: 2000px;
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 180px;
+        height: 180px;
+        margin: -90px 0 0 -90px;
+        transform-style: preserve-3d;
+        transform: scale(.8) rotateX(30deg) rotateY(-45deg); // 为了可以看见效果 给魔方一个初始旋转角度
+        animation: myCube 5s linear infinite both;
+        .aside {
+            position: absolute; // 设置绝对定位，方便后面控制每个面的位置
+            top: 0;
+            left: 0;
+            width: 180px;
+            height: 180px;
+            transform: translateZ(90px);
+            div {
+                width: 54px;
+                height: 54px;
+                border: 3px solid #000;
+                border-radius: 4px;
+                background-color: green;
+                float: left;
+            }
+            &.red { // 背面
+                transform: translateZ(-90px) rotateY(180deg);
+                div{
+                    background-color: red;
+                }
+            }
+            &.yellow { // 左面
+                transform: translateX(-90px) rotateY(-90deg);
+                div{
+                    background-color: yellow;
+                }
+            }
+            &.blue { // 右面
+                transform: translateX(90px) rotateY(90deg);
+                div {
+                    background-color: blue;
+                }
+            }
+            &.orange { // 上面
+                transform: translateY(-90px) rotateX(90deg);
+                div {
+                    background-color: orange;
+                }
+            }
+            &.yg { // 下面
+                transform: translateY(90px) rotateX(-90deg);
+                div {
+                    background-color: yellowgreen;
+                }
+            }
+        }
+    }
+}
+@keyframes myCube {
+    0%, 100% {
+        transform: scale(.8) rotateX(-30deg) rotateY(45deg);
+    }
+    25% {
+        transform: scale(.8) rotateX(-120deg) rotateY(-135deg);
+    }
+    50% {
+        transform: scale(.8) rotateX(150deg) rotateY(-45deg);
+    }
+    75% {
+        transform: scale(.8) rotateX(270deg) rotateY(135deg);
+    }
+}
