@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>highchart学习</title>
+<style>
+    .main {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 60px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .chart {
+        height: 300px;
+        border: 1px solid #ccc;
+        margin-bottom: 30px;
+    }
+</style>
+</head>
+<body>
+    <div class="main">
+        <div id="charts" class="chart"></div>
+        <div id="charts1" class="chart"></div>
+        <div id="charts2" class="chart"></div>
+        <div id="charts3" class="chart"></div>
+    </div>
+<!-- <script src="../jquery.js"></script> -->
+<!-- 唯一需要注意的是保证 highcharts.js 的引用顺序是在功能模块之前。 -->
+<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="./highcharts.js"></script>
+</body>
+</html>

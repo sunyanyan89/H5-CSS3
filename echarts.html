@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>echarts学习</title>
+<style>
+    .main {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .chart {
+        height: 400px;
+        width: 600px;
+        border: 1px solid #ccc;
+        margin-bottom: 30px;
+    }
+</style>
+</head>
+<body>
+    <p id="time"></p>
+    <div class="main">
+        <div id="barEchart" class="chart"></div>
+        <div id="lineEchart" class="chart"></div>
+        <div id="pieEchart" class="chart"></div>
+        <div id="echart4" class="chart"></div>
+    </div>
+<!-- <script src="../jquery.js"></script> -->
+<!-- 唯一需要注意的是保证 highcharts.js 的引用顺序是在功能模块之前。 -->
+<!-- <script src="./js-util/echarts.js"></script> -->
+<script src="https://cdn.bootcss.com/echarts/4.1.0/echarts-en.common.js"></script>
+<script src="./echarts.js"></script>
+</body>
+</html>
