@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-sacle=1.0, minimum-scale=1.0">
+    <title>REM等比缩放响应式布局</title>
+    <style>
+        html { /*页面根元素*/
+            /*font-size: 10px; 最好不要写10px, 有些浏览器最小是12px, 默认16px
+              font-size: 16px; 1rem=16px 如果想要20px 需要计算 麻烦
+              为了方便rem计算，有的会写font-size=62.5%,此时1rem=62.5%*16px=10px, 
+              但同样的 谷歌浏览器的最小12px会使1rem=62.5%*12px=7.5px，影响样式*/
+            font-size: 100px; /*1rem=100px 20px=0.2rem 方便计算 */
+        }
+        body {
+            font-size: .16rem; /*字体为16px*/
+        }
+        .main div {
+            margin: .2rem;
+            background: red;
+        }
+        .box1 {
+            width: 1rem;
+            height: 1rem;
+        }
+        .box2 {
+            width: 2rem;
+            height: 2rem;
+        }
+        .box3 {
+            width: 3rem;
+            height: 3rem;
+        }
+    </style>
+</head>
+<body>
+<pre>
+css的样式单位：
+    px:固定单位
+    em:相对单位，相对父元素字体大小设定的单位
+    rem:root+em,相对单位，相对页面根元素(HTML)字体大小设定的单位
+        此时只要修改HTML字体大小，那么页面上所有以REM为单位的样式都会自动重新计算
+        一般针对移动端 不用于PC端
+
+</pre>    
+<div class="main">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</div>
+</body>
+</html>
+
+<p>
+        
+</p>
