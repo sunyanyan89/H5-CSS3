@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sticky-footer</title>
+    <link rel="stylesheet/less" href="sticky-footer.less">
+    <script src='./js-util/less.min.js'></script>
+    <style>
+        pre {
+            font-size: 14px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div>
+<h2> 什么是sticky-footer?</h2>
+<p> 当页面长度不够长的时候，页脚粘贴在视窗底部：如果页面足够长时页脚会被内容向下推送。</p>
+<pre> 
+实现方式：
+<h3>1.负margin布局方式</h3>
+    给内容div加一个父div,设置父div最小高度100%,内容div的padding-bottom为footer高度，给footer预留位置
+    footer设置margin-top为负的footer高度，position为relative
+    这样当页面内容少时，由于content的父div有最小高度100%，且footer有负margin-top，所以刚好处于页面底部；
+    页面内容较多时，footer区块随着content自动撑开，且正好处于content的padding-bottom位置
+    <mark>注意：content元素的padding-bottom、footer元素的高度以及footer元素的margin-top值必须要保持一致。</mark>
+    <strong>这种负margin的布局方式，是兼容性最佳的布局方案，各大浏览器均可完美兼容，适合各种场景，
+    但使用这种方式的前提是必须要知道footer元素的高度，且结构相对较复杂。</strong> 
+<hr>
+<h3>2.flex布局方式</h3>
+    内容和footer的父div设置display：flex, flex-direction: column;这样content和footer就会垂直排列，
+    再给content设置flex:1；footer设置flex：0，这样footer只会占据固有高度
+    而内容少时，存在剩余空间，content会自动放大，占据除footer外的剩余空间
+    当内容多时，没有多余空间，正常显示
+<hr>
+<h3>3.为内容区域添加最小的高度</h3>
+    这种方法需要精确知道content和footer的父div,即视窗的高度，设置content的最小高度为视窗高度减去footer高度
+    这样内容少时，content为最小高度，footer在视窗底部
+    内容多时，content变高，footer随content滚动
+    这个方式和第一种差不多，不过这种方法需要需要精确知道各个div的高度，不方便
+</pre>
+</div>
+<div class="main">
+    <div class="box box1">
+        <div class="content-wrapper clearfix">
+            <div class="content">
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+            </div>
+        </div>
+        <div class="footer">
+            我是footer
+        </div>
+    </div>
+    <div class="box box1">
+        <div class="content-wrapper clearfix">
+            <div class="content">
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+                负margin布局方式<br>
+            </div>
+        </div>
+        <div class="footer">
+            我是footer
+        </div>
+    </div>
+    <div class="box box2">
+        <div class="content">
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+        </div>
+        <div class="footer">
+            我是footer
+        </div>
+    </div>
+    <div class="box box2">
+        <div class="content">
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+            flex布局方式<br>
+        </div>
+        <div class="footer">
+            我是footer
+        </div>
+    </div>
+    <div class="box box3">
+        <div class="content">
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+        </div>
+        <div class="footer">
+            我是footer
+        </div>
+    </div>
+    <div class="box box3">
+        <div class="content">
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+            未处理布局 <br>
+        </div>
+        <div class="footer">
+            我是footer
+        </div>
+    </div>
+</div>
+</body>
+</html>
