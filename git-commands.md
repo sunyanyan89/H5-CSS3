@@ -6,7 +6,7 @@
 >
 > --pretty指定使用完全不同于默认格式的方式展示提交历史。比如用oneline 将 每个提交 放在一行显示，这在提交数很大时非常有用
 >
-> **git status** 状态查看  
+> **git status** 状态查看
 >
 > **git add** 把工作区添加到暂存区
 >
@@ -61,3 +61,26 @@
 > `git reset --hard HEAD^`
 >
 > 在Git中，用HEAD表示当前版本，也就是最新的提交（注意每个人的提交ID肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+
+## 分支管理
+
+> 创建并切换分支
+>
+> `git checkout -b dev`
+>
+> git checkout 命令加上-b参数表示创建并切换 相当于以下两条命令
+>
+> `git branch dev`
+> `git checkout dev`
+>
+> 查看分支
+>
+> `git branch`  查看所有本地分支，当前分支前面会标一个*号
+> `git branch -r`  查看所有远程分子
+> `git branch -a`  查看所有本地分支和远程分支
+> `git branch -v`  查看每个分支的最后一个提交，展示commit id
+>
+> 删除分支
+>
+> `git branch -d dev`
+> `git branch -D dev`  加-D参数，强行删除分支
