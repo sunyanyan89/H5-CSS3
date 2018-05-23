@@ -76,8 +76,11 @@
 > 查看分支
 >
 > `git branch`  查看所有本地分支，当前分支前面会标一个*号
+>
 > `git branch -r`  查看所有远程分子
+>
 > `git branch -a`  查看所有本地分支和远程分支
+>
 > `git branch -v`  查看每个分支的最后一个提交，展示commit id
 >
 > 删除分支
