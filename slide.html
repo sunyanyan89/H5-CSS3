@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .main {
+            width: 1000px;
+            height: 600px;
+            margin: 0 auto;
+            border: 1px solid #abcdef;
+        }
+        .outerBox {
+            position: relative;
+            top: 200px;
+            left: 200px;
+            width: 400px;
+            height: 20px;
+            margin: 10px;
+            background: #aaa;
+        }
+        .innerBox {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: orange;
+        }
+        .progress {
+            width: 0;
+            height: 50px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="outerBox">
+            <div class="innerBox"></div>
+        </div>
+        <span class="num">0</span>%
+
+        <div class="progress"></div>
+    </div>
+
+<script src="./js-util/jquery.js"></script>
+<script>
+(function(){
+    let outer = $('.outerBox');
+    let box = $('.innerBox');
+    let percentage = 0;
+    let pro = $('.progress')
+    box.mousedown(function(e){
+        let distanceX = e.pageX - box.offset().left + outer.offset().left;
+
+        $(document).mousemove(function(e) {
+            let x = e.pageX - distanceX;
+            if(x < 0) {
+                x = 0; 
+            } else if(x > outer.width() - box.width()) {
+                x = outer.width() - box.width();
+            }
+            
+            box.css({ left: x });
+            percentage = x/(outer.width() - box.width());
+            $('.num').text( (percentage * 100).toFixed(2));
+
+            pro.width(percentage*800)
+            
+
+        }).mouseup(function() {
+            $(document).unbind('mousemove');
+        })
+    })
+})()
+</script>
+</body>
+</html>

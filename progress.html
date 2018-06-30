@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>progress</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .main {
+            width: 1000px;
+            height: 600px;
+            margin: 0 auto;
+            border: 1px solid #abcdef;
+        }
+        .proBox {
+            margin: 20px;
+            width: 200px;
+            height: 10px;
+            background: #bbb;
+        }
+        .progress {
+            width: 0;
+            height: 10px;
+            background: repeating-linear-gradient(45deg, #5CB85C, #5CB85C 25%, #74C274 25%, #74C274 50%);
+            background-size: 10px 10px;            
+            animation: progressMove .3s linear infinite;
+        }
+        @keyframes progressMove {
+            from{
+                background-position: 0 0;
+            }
+            to {
+                background-position: 0 -.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="proBox">
+            <div class="progress"></div>
+        </div>
+        <span class="num">0</span>%
+    </div>
+
+<script src="./js-util/jquery.js"></script>
+<script>
+(function(){
+    let progress = $('.progress');
+    let pWidth = 0;
+    let time = setInterval(function() {
+        // progress.animate({
+        //     width: pWidth += 10
+        // })
+        progress.width(pWidth += 10)
+        $('.num').text(parseInt(pWidth/200*100))
+        pWidth === 200 ? clearInterval(time) : ''
+    }, 100)
+})();
+</script>
+</body>
+</html>

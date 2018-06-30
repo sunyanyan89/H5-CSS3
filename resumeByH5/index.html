@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet/less" href="css/index.less">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script src='util/less.min.js'></script>
+    <title>H5开发创意简历</title>
+</head>
+<body>
+<main class="mainBox">
+    <section class="loadingBox">
+        <div class="title">
+            <h1>孙妍妍</h1>
+            <h2>H5场景的交互型简历</h2>
+        </div>
+        <div class="progress">
+            <div class='run'></div>
+        </div>
+    </section>
+    <section class="phoneBox">
+        <div class="header">
+            <h2 class='name'>孙妍妍</h2>
+            <span class="time">00:00</span>
+        </div>
+        <div class="toListen">
+            <audio src="./audio/bell.mp3" id='audioBell' loop preload='none'></audio>
+            <div class="next"></div>
+        </div>
+        <div class="listening">
+            <audio src="./audio/comfortable.mp3" id='audioSay' loop preload='none'></audio>
+            <div class="next"></div>
+        </div>
+    </section>
+    <section class="messageBox"></section>
+    <section class="cubeBox">
+        <ul class="box">
+            <li><img src="./img/cube1.png" alt=""></li>
+            <li><img src="./img/cube2.png" alt=""></li>
+            <li><img src="./img/cube3.png" alt=""></li>
+            <li><img src="./img/cube4.png" alt=""></li>
+            <li><img src="./img/cube5.png" alt=""></li>
+            <li><img src="./img/cube6.png" alt=""></li>
+        </ul>
+        <div class="tip">
+            魔方可旋转，可点击哟！
+        </div>
+    </section>
+    <section class="swiperBox">
+        <div class="return">
+            <i class="iconfont icon-fanhui"></i>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide page1">
+                    <dl id='makisuBox'>
+                        <dt>自我介绍</dt>
+                        <dd><span class="no">01</span><span class="desc">姓名：孙妍妍</span></dd>
+                        <dd><span class="no">02</span><span class="desc">性别：女</span></dd>
+                        <dd><span class="no">03</span><span class="desc">年龄：23</span></dd>
+                        <dd><span class="no">04</span><span class="desc">毕业院校：西北大学</span></dd>
+                        <dd><span class="no">05</span><span class="desc">学历：本科</span></dd>
+                        <dd><span class="no">06</span><span class="desc">籍贯：江苏</span></dd>
+                        <dd><span class="no">07</span><span class="desc">电话：173xxxx0195</span></dd>
+                        <dd><span class="no">08</span><span class="desc">邮箱：546208361@qq.com</span></dd>
+                    </dl>
+                </div>
+                <div class="swiper-slide page2">
+                    <h2>专业技能</h2>
+                    <img src="./img/course1.png" alt="">
+                    <img src="./img/course2.png" alt="">
+                    <img src="./img/course3.png" alt="">
+                    <img src="./img/course4.png" alt="">
+                    <img src="./img/course5.png" alt="">
+                    <img src="./img/course6.png" alt="">
+                    <img src="./img/course.png" alt="">
+                </div>
+                <div class="swiper-slide page3">
+                    <div class="header">
+                        <h2>这是列表</h2>
+                    </div>
+                    <div>
+                        <ul class='teachers'>
+                            <li class="teacher">
+                                <img src="./audio/avator.jpg" alt="">
+                                <h3 class='name'>周周周</h3>
+                                <div class="desc">HTTP协议采用了请求/响应模型，服务器给与响应。</div>
+                            </li>
+                            <li class="teacher">
+                                <img src="./audio/avator.jpg" alt="">
+                                <h3 class='name'>周周周</h3>
+                                <div class="desc">HTTP协议采用了请求/响应模型，服务器给与响应。</div>
+                            </li>
+                            <li class="teacher">
+                                <img src="./audio/avator.jpg" alt="">
+                                <h3 class='name'>周周周</h3>
+                                <div class="desc">HTTP协议采用了请求/响应模型，服务器给与响应。</div>
+                            </li>
+                            <li class="teacher">
+                                <img src="./audio/avator.jpg" alt="">
+                                <h3 class='name'>周周周</h3>
+                                <div class="desc"></div>
+                            </li>
+                            <li class="teacher">
+                                <img src="./audio/avator.jpg" alt="">
+                                <h3 class='name'>周周周</h3>
+                                <div class="desc">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
+                            </li>
+                            <li class="teacher">
+                                <img src="./audio/avator.jpg" alt="">
+                                <h3 class='name'>周周周</h3>
+                                <div class="desc">HTTP超文本传输协议，目前网页传输的的通用协议。</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide page4">
+                    <img src="./audio/timg.jpg" alt="">
+                    <div class="mask"></div>
+                    <div class="header">
+                        <img src="./audio/avator.jpg" alt="">
+                        <div class="title">
+                            <h2>平凡之路</h2>
+                            <h3>朴树</h3>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="wrapper" data-h=0>
+                            <p>hshdahdhasdh哈哈哈</p>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="progress">
+                            <span class='curTime'>00:00</span>
+                            <div class='runBox'>
+                                <div class='run'></div>
+                            </div>
+                            <span class='totalTime'>00:00</span>
+                        </div>
+                        <div class='control'>
+                            <i class="iconfont icon-zuobofang"></i>
+                            <i class="iconfont icon-pause"></i>
+                            <i class="iconfont icon-youbofang"></i>
+                        </div>
+                    </div>
+                    <audio src="./audio/平凡之路.mp3" id='road' preload='none'></audio>
+                </div>
+                <div class="swiper-slide page5">
+                    <div class="img">
+                        <img src="audio/timg.jpg" alt="">
+                    </div>
+                    <div class="img">
+                        <img src="audio/timg.jpg" alt="">
+                    </div>
+                    <div class="img">
+                        <img src="audio/timg.jpg" alt="">
+                    </div>
+                    <div class="footer">
+                        <p>让梦想燃烧！</p>
+                    </div>
+                </div>
+                <div class="swiper-slide page6">
+                    <div class="header">
+                        <p>联系我们</p>
+                        <p>contact us</p>
+                    </div>
+                    <div class="main">
+                        <ul >
+                            <li>
+                                <img src="img/phone.png" alt="">
+                                <div class="detail">
+                                    <p>qq:12344444</p>
+                                    <p>TEL:12344444</p>
+                                    <p>手机:12344444</p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="img/address.png" alt="">
+                                <div class="detail">
+                                    <p>地址：</p>
+                                    <p>的哈收到啦圣诞快乐是代理商</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<script src='js/rem.js'></script>
+<script src='util/zepto.min.js'></script>
+<script src='util/swiper.js'></script>
+<script src='util/makisu.min.js'></script>
+<script src='js/index.js'></script>
+</main>   
+</body>
+</html>

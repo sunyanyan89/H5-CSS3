@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>waterfall</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .main {
+            position: relative;
+            margin-left: 200px;
+        }
+        .item {
+            position: absolute;
+            margin: 10px 10px 0;
+            padding: 10px;
+            border: 1px solid #aaa;
+        }
+        .item:nth-child(3n+1) {
+            left: 0;
+            top: 0;
+        }
+        .item:nth-child(3n+2) {
+            left: 332px;
+            top: 0;
+        }
+        .item:nth-child(3n) {
+            left: 664px;
+            top: 0;
+        }
+        .item img {
+            width: 300px;
+        }
+        .item .desc {
+            width: 300px;
+            font-size: 14px;
+            text-indent: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="item">
+            <img src="imgs/郑容和1.jpeg" alt="">
+            <p class="desc">返回第一个匹配元素的偏移坐标该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效。</p>
+        </div>
+        <div class="item">
+            <img src="imgs/郑容和2.jpeg" alt="">
+            <p class="desc">返回第一个匹配元素的偏移坐标该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效.
+            返回第一个匹配元素的偏移坐标该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效
+            返回第一个匹配元素的偏移坐标该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效。</p>
+        </div>
+        <div class="item">
+            <img src="imgs/郑容和3.jpg" alt="">
+            <p class="desc">返回第一个匹配元素的偏移坐标该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效
+            返回第一个匹配元素的偏移坐标该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效。</p>
+        </div>
+        <div class="item">
+            <img src="imgs/郑容和4.jpeg" alt="">
+            <p class="desc">HTTP（HyperTextTransferProtocol）即超文本传输协议，目前网页传输的的通用协议。HTTP协议采用了请求/响应模型，浏览器或其他客户端发出请求，服务器给与响应。就整个网络资源传输而言，包括message-header和message-body两部分。首先传递message- header，即http header消息 。http header 消息通常被分为4个部分：general  header, request header, response header, entity header。但是这种分法就理解而言，感觉界限不太明确。根据维基百科对http header内容的组织形式，大体分为Request和Response两部分。</p>
+        </div>
+        <div class="item">
+            <img src="imgs/郑容和5.jpeg" alt="">
+            <p class="desc">返回第一个匹配元素的偏移坐标该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效.
+            返回第一个匹配元素的偏移坐标该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效
+            返回第一个匹配元素的偏移坐标该方法返回的对象包含两个整型属性：top 和 left，以像素计。此方法只对可见元素有效。</p>
+        </div>
+        <div class="item">
+            <img src="imgs/郑容和6.jpeg" alt="">
+            <p class="desc">React可以轻松创建交互式用户界面。为应用程序中的每个状态设计简单的视图，当数据更改时，React 将高效地更新和正确的渲染组件。
+            声明式视图使您的代码更具可预测性，更易于调试。</p>
+        </div>
+        <div class="item">
+            <img src="imgs/郑容和7.jpg" alt="">
+            <p class="desc">React可以轻松创建交互式用户界面。为应用程序中的每个状态设计简单的视图，当数据更改时，React 将高效地更新和正确的渲染组件。
+            我们不会对你的技术栈的其余部分做出假设，所以您可以在 React 中开发新功能，而无需重写现有的代码。</p>
+        </div>
+        <div class="item">
+            <img src="imgs/郑容和8.jpg" alt="">
+            <p class="desc">React可以轻松创建交互式用户界面。为应用程序中的每个状态设计简单的视图，当数据更改时，React 将高效地更新和正确的渲染组件。
+            由于组件逻辑是用 JavaScript 而不是模板编写的，因此可以通过应用程序轻松传递丰富的数据，并将 state(状态) 保留在DOM之外。</p>
+        </div>
+    </div>
+
+<script src="./js-util/jquery.js"></script>
+<script>
+(function(){
+    let items = $('.item');
+    let heightBox = {
+        leftBox: 0,
+        centerBox: 0,
+        rightBox: 0
+    };
+    [].slice.call(items).forEach(function(e,i) {
+        switch(i%3) {
+            case 0: 
+                $(e).css('top', heightBox.leftBox);
+                heightBox.leftBox += $(e).outerHeight(true);
+                break;
+            case 1: 
+                $(e).css('top',heightBox.centerBox);
+                heightBox.centerBox += $(e).outerHeight(true);
+                break;
+            case 2:
+                $(e).css('top',heightBox.rightBox);
+                heightBox.rightBox += $(e).outerHeight(true);
+                break;
+        }
+    })
+})()
+</script>
+</body>
+</html>

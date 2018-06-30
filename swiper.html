@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="swiper.css">
+    <style>
+        .main {
+            width: 200px;
+            height: 200px;
+        }
+        .swiper-container, .swiper-slide {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+         <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" style='background: goldenrod;'>slider1</div>
+                  <div class="swiper-slide"  style='background: red;'>slider2</div>
+                  <div class="swiper-slide" style='background: green;'>slider3</div>
+                </div>
+              </div>
+    </div>
+       
+<script src='swiper.js'></script>
+<script>
+    (function() {
+        var mySwiper =  new Swiper('.swiper-container', {
+    autoplay: true,//可选选项，自动滑动
+    effect: 'coverflow'
+})
+    })()
+</script>
+</body>
+</html>

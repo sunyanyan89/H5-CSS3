@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        height: 2000px;
+    }
+    .popMask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -100;
+        background: rgba(0, 0, 0, .3);
+    }
+    .pop-window {
+        position: absolute;
+        left: 200px;
+        top: 200px;
+        width: 300px;
+        height: 300px;
+        background: #abcdef;
+        padding: 2px;
+    }
+    .pop-window .header {
+        padding: 0 4px;
+        height: 30px;
+        line-height: 30px;
+    }
+    .pop-window .close {
+        font-size: 14px;
+        float: right;
+        font-weight: 100;
+    }
+    .pop-window .close:hover {
+        color: red;
+    }
+    .pop-window .content {
+        padding: 4px;
+        height: 270px;
+        box-sizing: border-box;
+        background: #fff;
+    }
+
+    </style>
+</head>
+<body>
+    <a href="javascript:;" class="toShow">显示窗口</a>
+    <div class="popMask" style="display: none;"></div>
+    <div class="pop-window" style="display: none;">
+        <div class="header">
+            <h3>这是窗口<span class="close">关闭</span></h3> 
+        </div>
+        <div class="content"></div>
+    </div>
+
+<script src="./js-util/jquery.js"></script>
+<script>
+(function() {
+    let popMask = $('.popMask');
+    // 获取div的高 宽
+    let popWindow = $('.pop-window');
+    let selfWidth = popWindow.outerWidth(), selfHeight = popWindow.outerHeight();
+    let curWidth , curHeight, scrollTop;
+
+    function reCal(scrollTop=0) {
+        let winHeight = $(window).height(), winWidth = $(window).width(); 
+        curWidth = (winWidth - selfWidth) / 2, curHeight = (winHeight - selfHeight) / 2;
+        popWindow.css({
+            'left': curWidth,
+            'top': curHeight + scrollTop
+        })
+    }
+    reCal();
+    $('.toShow').on('click', function() {
+        popMask.show();
+        popWindow.show();
+    });
+
+    $('.close').on('click', function() {
+        popMask.hide();
+        popWindow.hide();
+    });
+
+    popWindow.mousedown(function(e){
+        let distanceX = e.pageX - popWindow.offset().left;
+        let distanceY = e.pageY - popWindow.offset().top;
+
+        $(document).mousemove(function(e) {
+            let x = e.pageX - distanceX;
+            let y = e.pageY - distanceY;
+            if(x < 0) {
+                x = 0; 
+            } else if(x > $(document).width() - popWindow.outerWidth(true)) {
+                x = $(document).width() - popWindow.outerWidth(true);
+            }
+            if(y < 0)  {
+                y = 0;
+            }else if( y > $(document).height() - popWindow.outerHeight(true)) {
+                y = $(document).height() - popWindow.outerHeight(true);
+            }
+            popWindow.css({
+                left: x,
+                top: y
+            })
+        }).mouseup(function() {
+            $(document).unbind('mousemove');
+        })
+    })
+
+    // 改变浏览器大小 重新计算
+    $(window).resize(reCal);
+
+    // 滚动条变化 也重新计算
+    $(window).scroll(function() {
+        scrollTop = $(window).scrollTop();
+        reCal(scrollTop)
+    })
+
+})();
+
+</script>
+</body>
+</html>

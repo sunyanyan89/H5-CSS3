@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>draft拖拽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .main {
+            width: 1000px;
+            height: 600px;
+            margin: 0 auto;
+            border: 1px solid #abcdef;
+            /* position: relative; */
+        }
+        .box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box">
+
+        </div>
+    </div>
+
+<script src="./js-util/jquery.js"></script>
+<script>
+(function(){
+    let box = $('.box');
+    box.mousedown(function(e){
+        let distanceX = e.pageX - box.offset().left;
+        let distanceY = e.pageY - box.offset().top;
+        console.log(distanceX, distanceY);
+
+        $(document).mousemove(function(e) {
+            console.log(e.pageX, e.pageY);
+            let x = e.pageX - distanceX;
+            let y = e.pageY - distanceY;
+            if(x < 0) {
+                x = 0; 
+            } else if(x > $(document).width() - box.outerWidth(true)) {
+                x = $(document).width() - box.outerWidth(true);
+            }
+            if(y < 0)  {
+                y = 0;
+            }else if( y > $(document).height() - box.outerHeight(true)) {
+                y = $(document).height() - box.outerHeight(true);
+            }
+            box.css({
+                left: x,
+                top: y
+            }).mouseup(function() {
+                $(document).unbind('mousemove');
+            })
+        })
+    })
+})()
+</script>
+</body>
+</html>

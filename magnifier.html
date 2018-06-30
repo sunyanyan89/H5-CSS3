@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+        .main {
+            float: left;
+            width: 460px;
+            height: 570px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #abcdef;
+        }
+        .mainImg {
+            position: relative;
+            width: 458px; 
+            height: 458px;
+            /* padding: 29px; */
+            margin-bottom: 10px;
+            border: 1px solid #aaa;
+        }
+        .mask {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #abcdef;
+            opacity: .4;
+        }
+        .mainImg img {
+            width: 458px;
+            height: 458px;
+        }
+        .control {
+            float: left;
+            width: 16px;
+            height: 98px;
+            line-height: 98px;
+            text-align: center;
+            border: 1px solid #bbb;
+            cursor: pointer;
+        }
+        .control.disabled {
+            cursor: default;
+            background-color: #eee;
+        }
+        .miniImgs {
+            float: left;
+            width: 424px;
+            height: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .miniImgs ul {
+            width: 636px;
+            position: absolute;
+        }
+        .miniImgs li {
+            float: left;
+            width: 96px;
+            height: 96px;
+            border: 1px solid #bbb;
+            margin: 0 2px;
+            padding: 2px;
+            cursor: pointer;
+        }
+        .miniImgs li.active, .miniImgs li:hover {
+            border: 1px solid orange;
+        }
+        .miniImgs img {
+            width: 96px;
+            height: 96px;
+        }
+        .maxImg {
+            position: relative;
+            float: left;
+            margin: 20px;
+            width: 500px;
+            height: 500px; 
+            overflow: hidden;
+        }
+        .maxImg img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 800px;
+            height: 800px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="main">
+<div class="mainImg">
+    <div class="mask" style="display: none;"></div>
+    <img src="imgs/郑容和1.jpeg" alt="" class="show normal">
+</div>
+<div class="miniBox">
+    <span class="control prev disabled">&lt;</span>
+    <div class="miniImgs"> 
+        <ul class="miniUl">
+            <li><img src="imgs/郑容和1.jpeg" alt=""></li>
+            <li><img src="imgs/郑容和2.jpeg" alt=""></li>
+            <li><img src="imgs/郑容和3.jpg" alt=""></li>
+            <li><img src="imgs/郑容和4.jpeg" alt=""></li>
+            <li><img src="imgs/郑容和5.jpeg" alt=""></li>
+            <li><img src="imgs/郑容和6.jpeg" alt=""></li>
+        </ul>  
+    </div>
+    <span class="control next">&gt;</span>
+</div>
+</div>
+<div class="maxImg" style="display:none;">
+    <img src="imgs/郑容和1.jpeg" alt="" class="show max">
+</div> 
+<script src="./js-util/jquery.js"></script>
+<script>
+$(function() {
+    let item = $('li');
+    let ul = $('.miniUl');
+    let show = $('.show');
+    let normal = $('normal');
+    let maxBox = $('.maxImg'), max = $('.max');
+    let now = 0;
+    let prev = $('.prev'), next = $('.next');
+    let mask = $('.mask'), mainImg = $('.mainImg');
+    let percentageX = 0, percentageY = 0;
+
+    mainImg.mousemove(function(e) {
+        mask.show();
+        maxBox.show();
+        let x = e.pageX - mask.width() / 2 - mainImg.offset().left;
+        let y = e.pageY - mask.height() / 2 - mainImg.offset().top;
+
+        if(x < 0) {
+            x = 0
+        }else if(x > mainImg.width() - mask.width()) {
+            x = mainImg.width() - mask.width()
+        }
+
+        if(y < 0) {
+            y = 0
+        }else if(y > mainImg.width() - mask.width()) {
+            y = mainImg.width() - mask.width()
+        }
+        mask.css({
+            left: x,
+            top: y
+        });
+
+        percentageX = x / (mainImg.width() - mask.width());
+        percentageY = y / (mainImg.height() - mask.height());
+        
+        // 300 = 800 -500
+        max.css({
+            left: -percentageX * 300,
+            top: -percentageY * 300
+        })
+    }).mouseout(function() {
+        mask.hide();
+        maxBox.hide();
+    })
+
+    item.mouseover(function() {
+        let src = $(this).find('img').attr('src');
+        console.log(src);
+        $(this).addClass('active').siblings().removeClass('active');
+        show.attr('src', src);
+    })
+
+    prev.on('click', function() {
+        console.log(now);
+        if(now === 0) return;
+        now--;
+        if(now === 0) prev.addClass('disabled');
+        next.removeClass('disabled');
+        // if(now)
+        ul.animate({
+            left: '+='+now * 106
+        })
+    });
+
+    next.on('click', function() {
+        if(now === 2) return;
+        now++;
+        if(now === 2) next.addClass('disabled');
+        prev.removeClass('disabled');
+        ul.animate({
+            left: -now * 106
+        })
+    });
+})
+</script>  
+</body>
+</html>
